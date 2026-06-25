@@ -26,7 +26,7 @@ public class ProductService
                        .filter(p -> minPrice == null || p.getPrice() >= minPrice)
                        .filter(p -> maxPrice == null || p.getPrice() <= maxPrice)
                        .filter(p -> subCategory == null || subCategory.equalsIgnoreCase(p.getSubCategory()))
-                       .filter(Product::isFeatured)
+                       // removed this because it was only showing featured products from GET products .filter(Product::isFeatured)
                        .toList();
     }
 
