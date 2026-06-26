@@ -18,4 +18,25 @@ public class ProfileService
     {
         return profileRepository.save(profile);
     }
+
+    //get a profile by userId
+    public Profile getByUserId(int userId)
+    {
+        return profileRepository.findById(userId).orElse(null);
+    }
+
+    //update all fields on the existing profile and save
+    public Profile update(int userId, Profile profile)
+    {
+        Profile existing = profileRepository.findById(userId).orElseThrow();
+        existing.setFirstName(profile.getFirstName());
+        existing.setLastName(profile.getLastName());
+        existing.setPhone(profile.getPhone());
+        existing.setEmail(profile.getEmail());
+        existing.setAddress(profile.getAddress());
+        existing.setCity(profile.getCity());
+        existing.setState(profile.getState());
+        existing.setZip(profile.getZip());
+        return profileRepository.save(existing);
+    }
 }
